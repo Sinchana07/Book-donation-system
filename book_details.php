@@ -2,7 +2,6 @@
 <?php
 include('includes/connect.php');
 include('functions/common_fun.php');
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,93 +34,27 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <!-- Home page link -->
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="home/home.php">Home</a>
             </li>
-
             <!-- Category menu -->
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="index.php">Category</a>
             </li>
-
-            <!-- Cart page link  -->
-            <li class="nav-item">
-              <a class="nav-link active" href="cart/cart.php">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                <sup><!-- displaying the number of items in cart in superscript -->
-                  <?php
-                  $select_cart_items = "select * from `cart_details`";
-                  $result_query = mysqli_query($con, $select_cart_items);
-                  $num_items = mysqli_num_rows($result_query);
-                  if ($num_items > 0) {
-                    echo "$num_items";
-                  } else {
-                    echo "0";
-                  }
-                  ?>
-                </sup>
-              </a>
-            </li>
-
-            <!--calling cart function-->
-            <?php
-            cart();
-            ?>
-            <!-- Register page link -->
-            <li class="nav-item">
-              <!-- login if user not logged in yet , and logout if user has already logged in -->
-              <?php
-              if (!isset($_SESSION['email'])) {
-                echo
-                "<span class='navbar-text'>
-                <li class='nav-item'>
-                  <a class='nav-link active' href='login/login.php'>Login</a>
-                </li>  
-              </span>";
-              } else {
-                echo
-                "<!-- Donor page link -->
-                <li class='nav-item'>
-                  <a class='nav-link active' href='donor/index.php'>Donate<i class='fa-solid fa-heart'></i></a>
-                </li>
-                <li class='nav-item' style='color: white; list-style: none;'>
-                  <a class='nav-link active' href='profile/profile.php'>Profile<i class='fa fa-user' aria-hidden='true'></i></a>
-                </li>
-                <span>
-                  <li class='nav-item'>
-                    <a class='nav-link' href='login/logout.php'>Logout</a>
-                  </li>  
-                </span>";
-              }
-              ?>
-            </li>
-
           </ul>
-
-          <ul class="navbar-nav me-auto" style="text-color: white; float:left;">
-
-            <?php
-            //displaying welcome message
-
-            if (!isset($_SESSION['email'])) {
-              echo
-              "<span class='navbar-text'>
-              <li class='nav-item'>
-                <a class='nav-link' href='#' style='color: white;'>Welcome Guest</a>
-              </li> 
-            </span>
-            ";
-            } else {
-              echo
-              "<span class='navbar-text'>
-              <li class='nav-item'>
-                <a class='nav-link' href='#' style='color: white;'>Welcome " . $_SESSION['name'] . "</a>
-              </li>  
-            </span>";
-            }
-            ?>
-
-          </ul>
+          <!--calling cart function-->
+          <?php
+          cart();
+          ?>
+          <span class="navbar-text">
+            <ul class="navbar-nav me-auto" style="text-color: white">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Welcome Guest</a>
+              </li>
+          </span>
+          <li class="nav-item">
+            <a class="nav-link" href="login/login.php">Login</a>
+          </li>
           <form class="d-flex" action="search_product.php" method="get">
             <input class="form-control me-2" type="search" placeholder="Search Books" aria-label="Search" name="search_data">
             <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_book">
@@ -133,12 +66,12 @@ session_start();
     </ul>
     </nav>
 
-    <!-- side nav bar displaying the publications and book categories-->
+    <!--Third child-->
     <div class="row" style="padding-top: 50px; position:relative; height:100vh">
       <div class="col-md-2 sidenav">
         <!--Publications to be displayed-->
-        <ul class="navbar-nav text-center sidenav-list">
-          <li class=" nav-item">
+        <ul class="navbar-nav me-auto text-center sidenav-list">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <h4 class="side_heading">Publications</h4>
             </a>
@@ -179,13 +112,12 @@ session_start();
       <div class="col-md-10 py-5">
         <!--books-->
         <div class="row">
-          <!-- fetching books dynamically from the books table -->
+          <!--view more data -->
           <?php
           // function declared in functions/common_fun.php
-          getBooks();
+          view_details();
           getParticularCategory();
           getParticularPublisher();
-          getParticularauthor();
           ?>
         </div>
       </div>
