@@ -15,7 +15,7 @@ include('../functions/common_fun.php');
     <!--font awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- csd file-->
+    <!-- css file-->
     <link rel="stylesheet" href="../style.css">
 
 </head>
@@ -61,13 +61,13 @@ include('../functions/common_fun.php');
                                 echo
                                 "<span>
                                     <li class='nav-item'>
-                                        <a class='nav-link' href='../login/logout.php' style='color: black; text-decoration: none; font-size: 20px;'>Logout</a>
+                                        <a class='nav-link' href='../login/logout.php' style='color: white; text-decoration: none; font-size: 20px;'>Logout</a>
                                     </li>  
                                 </span>";
                             }
                             ?>
                             <li class="nav-item">
-                                <a href="../index.php" class="nav-link" style="color: black; text-decoration: none; font-size: 20px;">Home</a>
+                                <a href="../index.php" class="nav-link" style="color: white; text-decoration: none; font-size: 20px;">Home</a>
                             </li>
                         </ul>
                     </nav>

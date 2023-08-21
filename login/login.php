@@ -43,7 +43,7 @@ include('../functions/common_fun.php');
 						<span class="details">Password</span>
 						<input type="password" id="password" placeholder="Enter your password" name="password">
 					</div>
-					<div>Forgot Password ?</div>
+					
 					<!-- login button -->
 					<div class="button text-center">
 						<button type="submit" name="login_btn">Login</button>
